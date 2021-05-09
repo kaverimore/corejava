@@ -15,7 +15,7 @@ public class PVRCinemasMain
         //Creating Objects for invoking automation methods...
         PVRCinemasHome newPVRCinema = new PVRCinemasHome();
         
-        newPVRCinema.automatingMovieSearchFeature();
+       // newPVRCinema.automatingMovieSearchFeature();
         
         newPVRCinema.automatingHandlingPopupsWindows("https://www.naukri.com/");
         
