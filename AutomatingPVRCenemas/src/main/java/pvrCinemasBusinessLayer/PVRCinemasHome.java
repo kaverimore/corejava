@@ -11,7 +11,11 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import pvrServices.PVRCinemasServices;
 
 public class PVRCinemasHome {
@@ -249,6 +253,71 @@ public class PVRCinemasHome {
 		finally {
 			System.out.println("In finally block..");
 			//Step 4: Close all the objects Created
+			newWebDriver.quit();
+		}
+			return "True";
+		}//Closing of method
+
+
+		public String alertPopupWorkFlowAutomation() throws InterruptedException
+		{
+			WebDriver neWebBrowser = null;
+			
+			try {
+				
+			//Step 1: Creating the Browser instance of choice... through service layer method..
+			
+			//Invoking the Service layer method for getting the browser instance...
+			neWebBrowser = PVRCinemasServices.getBrowserInstance();
+			
+			//Step 2: Launching the browser and loading the web application..
+			neWebBrowser.get("https://uidai.gov.in/ecosystem/authentication-devices-documents.html");
+			
+			//Additional browser settings... Maximising the browser window...
+			neWebBrowser.manage().window().maximize();
+		
+			//Implementing Unconditional Synchronisation....
+			neWebBrowser.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);  //Implicit wait..
+			
+			//Step3: Writing the actual Business logic step for automating  Alert pop up workflow..
+			WebElement biometricLinkDevices = neWebBrowser.findElement(By.xpath("//*[@id=\"tjmod-755\"]/div[2]/div/ul/li[3]/a"));
+			biometricLinkDevices.click();
+				
+			//Implementing Conditional wait Synchronisation....
+			WebDriverWait explicitwait = new WebDriverWait(newWebDriver, 60 , 15);
+			explicitwait.until(ExpectedConditions.alertIsPresent());
+			
+			//Making the thread idealize for 10 sec...
+			Thread.sleep(10000);
+		
+			//Business Logic foe handling Alert popup.. 
+			Alert biometricAlert= neWebBrowser.switchTo().alert(); //Switches the focus onto the alert pop up..
+
+			//Making the thread idealize for 10 sec...
+			Thread.sleep(10000);
+			
+			String alertPopupText = biometricAlert.getText();
+			System.out.println(alertPopupText);
+		
+			biometricAlert.accept();  //Clicking on the OK button within the alert pop up..
+
+		} 
+		//Closing of try
+		catch(NoSuchElementException nsee) {
+			System.out.println("Oops!! Element Not Found Exception Thrown");
+			}
+			
+		catch(IllegalArgumentException iae){
+			System.out.println("Oops!! Method Argument Null Exception Thrown");
+			}
+		
+		catch (Exception e) {
+			System.out.println("Oops!! No Exception class Able to Handle the Exception..");
+		}
+		finally {
+			System.out.println("In finally block..");
+			//Step 4: Close all the objects Created
+			System.out.println("Wow..Automation... Success....!!!!");
 			newWebDriver.quit();
 		}
 			return "True";

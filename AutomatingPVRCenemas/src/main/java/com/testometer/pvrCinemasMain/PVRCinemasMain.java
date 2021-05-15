@@ -12,12 +12,15 @@ public class PVRCinemasMain
     {
        // System.out.println( "Hello World!" );
         
-        //Creating Objects for invoking automation methods...
+
+    	//Creating Objects for invoking automation methods...
         PVRCinemasHome newPVRCinema = new PVRCinemasHome();
         
        // newPVRCinema.automatingMovieSearchFeature();
         
-        newPVRCinema.automatingHandlingPopupsWindows("https://www.naukri.com/");
+       // newPVRCinema.automatingHandlingPopupsWindows("https://www.naukri.com/");
+        
+        newPVRCinema.alertPopupWorkFlowAutomation();
         
     }
 }
