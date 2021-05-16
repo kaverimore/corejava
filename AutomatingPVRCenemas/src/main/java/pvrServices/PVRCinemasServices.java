@@ -20,10 +20,9 @@ public class PVRCinemasServices {
 		//Step 1.1: Adding the User interaction..
 		BufferedReader userInput = new BufferedReader(new InputStreamReader(System.in));
 		
-		System.out.print("Please Enter Your Choice/Type[Chrome/FF/IE]");
+		System.out.println("Please Enter Your Choice/Type[Chrome/FF/IE]");
 		
 		String browserChoice = userInput.readLine(); 
-		
 		
 		//Logic for Checking the Browser types...
 		if(browserChoice.equalsIgnoreCase("Chrome"))
@@ -40,9 +39,7 @@ public class PVRCinemasServices {
 		{
 			System.setProperty("webdriver.gecko.driver", "D:\\Selenium\\Components\\IEDriver.exe");
 			newBrowserInstance = new InternetExplorerDriver();
-		
 		}
-			
 		return newBrowserInstance;
 	}	
 }

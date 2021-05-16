@@ -1,14 +1,18 @@
 package com.testometer.pvrCinemasMain;
 
+import java.awt.AWTException;
+import java.io.IOException;
+
 import pvrCinemasBusinessLayer.PVRCinemasHome;
 
 /**
  * Hello world!
  *
  */
+
 public class PVRCinemasMain 
 {
-    public static void main( String[] args ) throws InterruptedException
+    public static void main( String[] args ) throws InterruptedException, IOException, AWTException
     {
        // System.out.println( "Hello World!" );
         
@@ -18,9 +22,10 @@ public class PVRCinemasMain
         
        // newPVRCinema.automatingMovieSearchFeature();
         
-       // newPVRCinema.automatingHandlingPopupsWindows("https://www.naukri.com/");
+        //newPVRCinema.automatingHandlingPopupsWindows("https://www.naukri.com/");
         
-        newPVRCinema.alertPopupWorkFlowAutomation();
+        //newPVRCinema.alertPopupWorkFlowAutomation(); //Automating alert pop ups..
         
+        newPVRCinema.automationOfHandlingDBoxes();  //Automating the dialog box pop ups..
     }
 }

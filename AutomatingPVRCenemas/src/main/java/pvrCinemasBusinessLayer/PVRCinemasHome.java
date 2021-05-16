@@ -1,6 +1,11 @@
 package pvrCinemasBusinessLayer;
 
+import java.awt.AWTException;
+import java.awt.Desktop.Action;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -11,7 +16,8 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.interactions.Actions;
+//import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -45,7 +51,6 @@ public class PVRCinemasHome {
 			
 			//Invoking the Service layer method for getting the browser instance...
 			newWebDriver = PVRCinemasServices.getBrowserInstance();
-			
 			
 			//Step 2: Launching the browser and loading the web application..
 			newWebDriver.get(WebAppURL);
@@ -258,8 +263,8 @@ public class PVRCinemasHome {
 			return "True";
 		}//Closing of method
 
-
-		public String alertPopupWorkFlowAutomation() throws InterruptedException
+		
+		public String alertPopupWorkFlowAutomation() throws InterruptedException,IOException
 		{
 			WebDriver neWebBrowser = null;
 			
@@ -295,11 +300,10 @@ public class PVRCinemasHome {
 
 			//Making the thread idealize for 10 sec...
 			Thread.sleep(10000);
-			
-			String alertPopupText = biometricAlert.getText();
-			System.out.println(alertPopupText);
-		
+	
 			biometricAlert.accept();  //Clicking on the OK button within the alert pop up..
+			//Making the thread idealize for 10 sec...
+			Thread.sleep(10000);
 
 		} 
 		//Closing of try
@@ -322,4 +326,131 @@ public class PVRCinemasHome {
 		}
 			return "True";
 		}//Closing of method
+		
+		public String automationOfHandlingDBoxes() throws InterruptedException,IOException,AWTException
+		{
+			WebDriver neWebBrowser = null;
+			
+			try {
+				
+			//Step 1: Creating the Browser instance of choice... through service layer method..
+			
+			//Invoking the Service layer method for getting the browser instance...
+			neWebBrowser = PVRCinemasServices.getBrowserInstance();
+			
+			//Step 2: Launching the browser and loading the web application..
+			neWebBrowser.get("https://www.toolsqa.com/automation-practice-form");
+			
+			//Additional browser settings... Maximising the browser window...
+			neWebBrowser.manage().window().maximize();
+		
+			//Implementing Unconditional Synchronisation....
+			neWebBrowser.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);  //Implicit wait..
+			
+			//Step3: Writing the actual Business logic step for automating  for handling dialog boxes...
+			//Locationg an clicking on Choose File Button...
+			WebElement chooseFileButton = neWebBrowser.findElement(By.id("uploadPicture"));
+			chooseFileButton.click();
+				
+			//Switch the focus to handle the dialog box..
+			Robot  dialogRobot = new Robot();
+			dialogRobot.keyPress(KeyEvent.VK_S);
+			dialogRobot.keyRelease(KeyEvent.VK_S);
+			dialogRobot.keyPress(KeyEvent.VK_A);
+			dialogRobot.keyRelease(KeyEvent.VK_A);
+			dialogRobot.keyPress(KeyEvent.VK_I);
+			dialogRobot.keyRelease(KeyEvent.VK_I);
+			Thread.sleep(10000);
+
+		} 
+		//Closing of try
+		catch(NoSuchElementException nsee) {
+			System.out.println("Oops!! Element Not Found Exception Thrown");
+			nsee.printStackTrace();
+		}
+			
+		catch(IllegalArgumentException iae){
+			System.out.println("Oops!! Method Argument Null Exception Thrown");
+			iae.printStackTrace();
+		}
+		
+		catch (Exception e) {
+			System.out.println("Oops!! No Exception class Able to Handle the Exception..");
+			e.printStackTrace();
+		}
+		finally {
+			System.out.println("In finally block..");
+			//Step 4: Close all the objects Created
+			System.out.println("Wow..Automation... Success....!!!!");
+			newWebDriver.quit();
+		}
+			return "True";
+		}//Closing of method
+		
+		public static void searchWorkflowAutomationUsingAUIAPI() throws IOException
+		{
+			WebDriver neWebBrowser = null;
+			
+			try {
+				
+			//Step 1: Creating the Browser instance of choice... through service layer method..
+			
+			//Invoking the Service layer method for getting the browser instance...
+			neWebBrowser = PVRCinemasServices.getBrowserInstance();
+			
+			//Step 2: Launching the browser and loading the web application..
+			neWebBrowser.get("https://uidai.gov.in/");
+			
+			//Additional browser settings... Maximising the browser window...
+			neWebBrowser.manage().window().maximize();
+		
+			//Implementing Unconditional Synchronisation....
+			neWebBrowser.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);  //Implicit wait..
+			
+			//Step3: Writing the actual Business logic  for automating  search workflow..
+			WebElement searchIcon = neWebBrowser.findElement(By.id("mod-search-searchword1081"));
+			WebElement searchTextBox = neWebBrowser.findElement(By.xpath("//*[@id=\'mod-search-searchword1081\']"));
+			WebElement searchButton = neWebBrowser.findElement(By.xpath("//*[@id=\'searchForm\']/div[1]/div[2]/button")); 
+			
+			//Advance User Interaction API....
+			Actions mouseActions = new Actions(neWebBrowser);
+			Action mouseEvents = mouseActions.moveToElement(searchIcon).click()
+											.sendKeys(searchTextBox,"Adhar Centres")
+											.moveToElement(searchButton).click().build();
+		
+			
+			//Making the thread idealize for 10 sec...
+			Thread.sleep(10000);
+		
+			//Business Logic foe handling Alert popup.. 
+			Alert biometricAlert= neWebBrowser.switchTo().alert(); //Switches the focus onto the alert pop up..
+
+			//Making the thread idealize for 10 sec...
+			Thread.sleep(10000);
+	
+			biometricAlert.accept();  //Clicking on the OK button within the alert pop up..
+			//Making the thread idealize for 10 sec...
+			Thread.sleep(10000);
+
+		} 
+		//Closing of try
+		catch(NoSuchElementException nsee) {
+			System.out.println("Oops!! Element Not Found Exception Thrown");
+			}
+			
+		catch(IllegalArgumentException iae){
+			System.out.println("Oops!! Method Argument Null Exception Thrown");
+			}
+		
+		catch (Exception e) {
+			System.out.println("Oops!! No Exception class Able to Handle the Exception..");
+		}
+		finally {
+			System.out.println("In finally block..");
+			//Step 4: Close all the objects Created
+			System.out.println("Wow..Automation... Success....!!!!");
+			newWebDriver.quit();
+		}
+			return "True";
+		}
 }
