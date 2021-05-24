@@ -17,7 +17,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
-//import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -28,12 +28,23 @@ public class PVRCinemasHome {
 	
 		//Local Variables for storing the WeDriver path and web app path..
 		private WebDriver newWebDriver;//Variable to store/point to  new Browser instance creatd
-		private String WebAppURL="https://www.naukri.com/";
+		//private static String WebAppURL="https://www.naukri.com/";
+		private static String WebAppURL="https://www.pvrcinemas.com/";
 		
 		public PVRCinemasHome()
 		{
 			//TODO Auto-generated constructor stub
 		}
+		public static int addingOfNumbers()
+		{
+			int numberOne=10;
+			int numberTwo=15;
+			int sumOfTwoNumbers= numberOne+numberTwo;
+			
+			return sumOfTwoNumbers;
+			
+		}
+		
 		
 		public String automatingMovieSearchFeature() throws InterruptedException
 		{
@@ -186,17 +197,17 @@ public class PVRCinemasHome {
 		
 		public String automatingHandlingAlertPopupsWindows(String webApplicationURL) 
 		{
-			WebDriver neWebBrowser = null;
+			WebDriver newWebDriver = null;
 			
 			try {
 				
 			//Step 1: Creating the Browser instance of choice... through service layer method..
 			
 			//Invoking the Service layer method for getting the browser instance...
-			neWebBrowser = PVRCinemasServices.getBrowserInstance();
+			newWebDriver = PVRCinemasServices.getBrowserInstance();
 			
 			//Step 2: Launching the browser and loading the web application..
-			neWebBrowser.get(WebAppURL);
+			newWebDriver.get(WebAppURL);
 			
 			//Implementing Synchronisation Concept
 			/*1.Implicit Synchronisation/ Wait: Unconditional Wait
@@ -204,7 +215,7 @@ public class PVRCinemasHome {
 			 */
 			
 			//Implementing Implicit wait..
-			neWebBrowser.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);  //Implicit wait..
+			newWebDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);  //Implicit wait..
 			//Implementing Conditional Wait../Explicit
 			//WebDriverWait wait = new WebDriverWait(newWebDriver , 30);
 			//wait.until(ExpectedCondition.invisibilityOfElementLocated(By.className("loadingWhiteBox")));
@@ -213,33 +224,33 @@ public class PVRCinemasHome {
 				   
 			//Logic for automating,Handling alert pop ups...
 			
-			WebElement ecoSystemLinkText = neWebBrowser.findElement(By.xpath("//*[@id='menu2413']/span"));
+			WebElement ecoSystemLinkText = newWebDriver.findElement(By.xpath("//*[@id='menu2413']/span"));
 			boolean yesOrNo = ecoSystemLinkText.isSelected();
 			
 			if(yesOrNo == true) {
-				WebElement authenticationDevicesLink = neWebBrowser.findElement(By.xpath("//*[@id='menu2435']/span"));
+				WebElement authenticationDevicesLink = newWebDriver.findElement(By.xpath("//*[@id='menu2435']/span"));
 				authenticationDevicesLink.click();
 				}
 				else {
 					System.out.println("OOPs!! something went wrong plz try again.......");
 				}
 			
-			/*WebElement simpleAlertButton = neWebBrowser.findElement(By.xpath("//*[@id='content']/p[3]/button"));
-			((JavascriptExecutor) neWebBrowser).executeScript("argument[0].click();", simpleAlertButton);
+			/*WebElement simpleAlertButton = newWebDriver.findElement(By.xpath("//*[@id='content']/p[3]/button"));
+			((JavascriptExecutor) newWebDriver).executeScript("argument[0].click();", simpleAlertButton);
 			 //simpleAlertButton.click();
 			*/
 			
 			//Locating the web element and associating the click event...
-			WebElement certifiedBiometricLinkText = neWebBrowser.findElement(By.xpath("//*[@id=\'tjmod-755\']/div[2]/div/ul/li[3]/a"));
+			WebElement certifiedBiometricLinkText = newWebDriver.findElement(By.xpath("//*[@id=\'tjmod-755\']/div[2]/div/ul/li[3]/a"));
 			certifiedBiometricLinkText.click();
 			
 			//Logic to Switching the focus onto the pop up..
-			Alert newAlert = neWebBrowser.switchTo().alert(); //Switches the focus onto the alert pop up..
+			Alert newAlert = newWebDriver.switchTo().alert(); //Switches the focus onto the alert pop up..
 			
 			String alertPopupText = newAlert.getText();
 			System.out.println(alertPopupText);
 			
-			//((JavascriptExecutor) neWebBrowser).executeScript("argument[0].click();", simpleAlertButton);
+			//((JavascriptExecutor) newWebDriver).executeScript("argument[0].click();", simpleAlertButton);
 			 newAlert.accept();  //Clicking on the OK button within the alert pop up..
 
 		} 
@@ -266,26 +277,26 @@ public class PVRCinemasHome {
 		
 		public String alertPopupWorkFlowAutomation() throws InterruptedException,IOException
 		{
-			WebDriver neWebBrowser = null;
+			WebDriver newWebDriver = null;
 			
 			try {
 				
 			//Step 1: Creating the Browser instance of choice... through service layer method..
 			
 			//Invoking the Service layer method for getting the browser instance...
-			neWebBrowser = PVRCinemasServices.getBrowserInstance();
+			newWebDriver = PVRCinemasServices.getBrowserInstance();
 			
 			//Step 2: Launching the browser and loading the web application..
-			neWebBrowser.get("https://uidai.gov.in/ecosystem/authentication-devices-documents.html");
+			newWebDriver.get("https://uidai.gov.in/ecosystem/authentication-devices-documents.html");
 			
 			//Additional browser settings... Maximising the browser window...
-			neWebBrowser.manage().window().maximize();
+			newWebDriver.manage().window().maximize();
 		
 			//Implementing Unconditional Synchronisation....
-			neWebBrowser.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);  //Implicit wait..
+			newWebDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);  //Implicit wait..
 			
 			//Step3: Writing the actual Business logic step for automating  Alert pop up workflow..
-			WebElement biometricLinkDevices = neWebBrowser.findElement(By.xpath("//*[@id=\"tjmod-755\"]/div[2]/div/ul/li[3]/a"));
+			WebElement biometricLinkDevices = newWebDriver.findElement(By.xpath("//*[@id=\"tjmod-755\"]/div[2]/div/ul/li[3]/a"));
 			biometricLinkDevices.click();
 				
 			//Implementing Conditional wait Synchronisation....
@@ -296,7 +307,7 @@ public class PVRCinemasHome {
 			Thread.sleep(10000);
 		
 			//Business Logic foe handling Alert popup.. 
-			Alert biometricAlert= neWebBrowser.switchTo().alert(); //Switches the focus onto the alert pop up..
+			Alert biometricAlert= newWebDriver.switchTo().alert(); //Switches the focus onto the alert pop up..
 
 			//Making the thread idealize for 10 sec...
 			Thread.sleep(10000);
@@ -329,27 +340,27 @@ public class PVRCinemasHome {
 		
 		public String automationOfHandlingDBoxes() throws InterruptedException,IOException,AWTException
 		{
-			WebDriver neWebBrowser = null;
+			WebDriver newWebDriver = null;
 			
 			try {
 				
 			//Step 1: Creating the Browser instance of choice... through service layer method..
 			
 			//Invoking the Service layer method for getting the browser instance...
-			neWebBrowser = PVRCinemasServices.getBrowserInstance();
+			newWebDriver = PVRCinemasServices.getBrowserInstance();
 			
 			//Step 2: Launching the browser and loading the web application..
-			neWebBrowser.get("https://www.toolsqa.com/automation-practice-form");
+			newWebDriver.get("https://www.toolsqa.com/automation-practice-form");
 			
 			//Additional browser settings... Maximising the browser window...
-			neWebBrowser.manage().window().maximize();
+			newWebDriver.manage().window().maximize();
 		
 			//Implementing Unconditional Synchronisation....
-			neWebBrowser.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);  //Implicit wait..
+			newWebDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);  //Implicit wait..
 			
 			//Step3: Writing the actual Business logic step for automating  for handling dialog boxes...
 			//Locationg an clicking on Choose File Button...
-			WebElement chooseFileButton = neWebBrowser.findElement(By.id("uploadPicture"));
+			WebElement chooseFileButton = newWebDriver.findElement(By.id("uploadPicture"));
 			chooseFileButton.click();
 				
 			//Switch the focus to handle the dialog box..
@@ -387,43 +398,45 @@ public class PVRCinemasHome {
 			return "True";
 		}//Closing of method
 		
-		public static void searchWorkflowAutomationUsingAUIAPI() throws IOException
+		public static String searchWorkflowAutomationUsingAUIAPI() throws IOException
 		{
-			WebDriver neWebBrowser = null;
+			WebDriver newWebDriver = null;
 			
 			try {
 				
 			//Step 1: Creating the Browser instance of choice... through service layer method..
 			
 			//Invoking the Service layer method for getting the browser instance...
-			neWebBrowser = PVRCinemasServices.getBrowserInstance();
+			newWebDriver = PVRCinemasServices.getBrowserInstance();
 			
 			//Step 2: Launching the browser and loading the web application..
-			neWebBrowser.get("https://uidai.gov.in/");
+			newWebDriver.get(WebAppURL);
 			
 			//Additional browser settings... Maximising the browser window...
-			neWebBrowser.manage().window().maximize();
+			newWebDriver.manage().window().maximize();
 		
 			//Implementing Unconditional Synchronisation....
-			neWebBrowser.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);  //Implicit wait..
+			newWebDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);  //Implicit wait..
 			
 			//Step3: Writing the actual Business logic  for automating  search workflow..
-			WebElement searchIcon = neWebBrowser.findElement(By.id("mod-search-searchword1081"));
-			WebElement searchTextBox = neWebBrowser.findElement(By.xpath("//*[@id=\'mod-search-searchword1081\']"));
-			WebElement searchButton = neWebBrowser.findElement(By.xpath("//*[@id=\'searchForm\']/div[1]/div[2]/button")); 
+			WebElement searchIcon = newWebDriver.findElement(By.id("mod-search-searchword1081"));
+			WebElement searchTextBox = newWebDriver.findElement(By.xpath("//*[@id=\'mod-search-searchword1081\']"));
+			WebElement searchButton = newWebDriver.findElement(By.xpath("//*[@id=\'searchForm\']/div[1]/div[2]/button")); 
 			
 			//Advance User Interaction API....
-			Actions mouseActions = new Actions(neWebBrowser);
-			Action mouseEvents = mouseActions.moveToElement(searchIcon).click()
-											.sendKeys(searchTextBox,"Adhar Centres")
-											.moveToElement(searchButton).click().build();
+			Actions newActions = new Actions(newWebDriver);
 		
-			
+			/*Action performingActions = newActions.click()
+									.moveToElement(searchIcon)
+									
+									.sendKeys(searchTextBox,"Adhar Centres")
+									.build();
+					*/
 			//Making the thread idealize for 10 sec...
 			Thread.sleep(10000);
 		
 			//Business Logic foe handling Alert popup.. 
-			Alert biometricAlert= neWebBrowser.switchTo().alert(); //Switches the focus onto the alert pop up..
+			Alert biometricAlert= newWebDriver.switchTo().alert(); //Switches the focus onto the alert pop up..
 
 			//Making the thread idealize for 10 sec...
 			Thread.sleep(10000);
@@ -449,7 +462,87 @@ public class PVRCinemasHome {
 			System.out.println("In finally block..");
 			//Step 4: Close all the objects Created
 			System.out.println("Wow..Automation... Success....!!!!");
-			newWebDriver.quit();
+			//newWebDriver.quit();
+		}
+			return "True";
+		}
+
+		public String automatingMovieSerchFeatureWithBatchExecution() throws IOException
+		{
+			WebDriver newWebDriver = null;
+			
+			try {
+				
+			//Step 1: Creating the Browser instance of choice... through service layer method..
+			
+			//Invoking the Service layer method for getting the browser instance...
+			newWebDriver = PVRCinemasServices.getBrowserInstance();
+			
+			//Step 2: Launching the browser and loading the web application..
+			newWebDriver.get(WebAppURL);
+			
+			//Additional browser settings... Maximising the browser window...
+			newWebDriver.manage().window().maximize();
+		
+			//Implementing Unconditional Synchronisation....
+			newWebDriver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);  //Implicit wait..
+			
+			//Step3: Writing the actual Business logic  for automating  search workflow..
+		
+			System.out.println("Successfully Done Movie Search Operation...........");
+			WebElement searchTextBox= newWebDriver.findElement(By.xpath("//*[@id='main__wrapper']/app-root/app-full-layout/nav/div/div[1]/div/div/div[2]/div[1]/div[1]/p-autocomplete/span/input"));
+			System.out.println("Successfully Done Movie Search Operation ......1.....");
+			//WebElement movieName = newWebDriver.findElement(By.xpath("//*[@id=\'searchForm\']/div[1]/div[2]/button")); 
+			WebElement movieName = newWebDriver.findElement(By.xpath("//*[@id='main__wrapper']/app-root/app-full-layout/nav/div/div[1]/div/div/div[2]/div[1]/div[1]/p-autocomplete/span/div/ul/li[1]/div/div/div"));
+			
+			System.out.println("Successfully Done Movie Search Operation ......2.....");
+			//Advance User Interaction API....
+			Actions newActions = new Actions(newWebDriver);
+			
+			
+		
+			org.openqa.selenium.interactions.Action performingActions = newActions.moveToElement(searchTextBox)
+					                   .click(searchTextBox)
+									   .sendKeys(searchTextBox, "BONNY")
+									   .moveToElement(movieName)
+									   .click(movieName)
+									    .build();
+			
+			newActions.perform();
+			
+			System.out.println("Successfully Done Movie Search Operation....3.......");
+					
+			//Making the thread idealize for 10 sec...
+			Thread.sleep(10000);
+		
+			//Business Logic foe handling Alert popup.. 
+			Alert biometricAlert= newWebDriver.switchTo().alert(); //Switches the focus onto the alert pop up..
+
+			//Making the thread idealize for 10 sec...
+			Thread.sleep(10000);
+	
+			biometricAlert.accept();  //Clicking on the OK button within the alert pop up..
+			//Making the thread idealize for 10 sec...
+			Thread.sleep(10000);
+
+		} 
+		//Closing of try
+		catch(NoSuchElementException nsee) {
+			System.out.println("Oops!! Element Not Found Exception Thrown");
+			}
+			
+		catch(IllegalArgumentException iae){
+			System.out.println("Oops!! Method Argument Null Exception Thrown");
+			}
+		
+		catch (Exception e) {
+			System.out.println("Oops!! No Exception class Able to Handle the Exception..");
+		}
+		finally {
+			System.out.println("In finally block..");
+			//Step 4: Close all the objects Created
+			System.out.println("Wow..Automation... Success....!!!!");
+			//newWebDriver.quit();
 		}
 			return "True";
 		}

@@ -26,6 +26,10 @@ public class PVRCinemasMain
         
         //newPVRCinema.alertPopupWorkFlowAutomation(); //Automating alert pop ups..
         
-        newPVRCinema.automationOfHandlingDBoxes();  //Automating the dialog box pop ups..
+        //newPVRCinema.automationOfHandlingDBoxes();  //Automating the dialog box pop ups..
+        
+        //newPVRCinema.searchWorkflowAutomationUsingAUIAPI();  //Automating search fields using batch execution...
+        
+        newPVRCinema.automatingMovieSerchFeatureWithBatchExecution();  //Automating search fields using batch execution...
     }
 }
