@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name = "PVRCinemas Parallel Testing Suite">
+   <test name = "Parallel Tests" parallel = "methods">
+      <classes>
+         <class name = "com.testometer.pvrCinemasMain.PVRCinemasServicesTest" />
+      </classes>
+   </test>
+</suite>
+

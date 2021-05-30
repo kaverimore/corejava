@@ -21,13 +21,14 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
 
 import pvrServices.PVRCinemasServices;
 
 public class PVRCinemasHome {
 	
 		//Local Variables for storing the WeDriver path and web app path..
-		private WebDriver newWebDriver;//Variable to store/point to  new Browser instance creatd
+		private static WebDriver newWebDriver;//Variable to store/point to  new Browser instance creatd
 		//private static String WebAppURL="https://www.naukri.com/";
 		private static String WebAppURL="https://www.pvrcinemas.com/";
 		
@@ -45,8 +46,8 @@ public class PVRCinemasHome {
 			
 		}
 		
-		
-		public String automatingMovieSearchFeature() throws InterruptedException
+		@Test
+		public static String automatingMovieSearchFeature() throws InterruptedException
 		{
 			try {
 				

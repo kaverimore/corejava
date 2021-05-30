@@ -3,12 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.testometer.pvrCinemasMain.PVRCinemasServicesTest">
+      <class name="com.testometer.pvrCinemasMain.PVRCinemasHomeTest">
         <methods>
-          <include name="SampleTest2"/>
-          <include name="getBrowserInstanceTest1"/>
+          <include name="beorMethod"/>
+          <include name="addingNumbersTest2"/>
+          <include name="afterMethod"/>
         </methods>
-      </class> <!-- com.testometer.pvrCinemasMain.PVRCinemasServicesTest -->
+      </class> <!-- com.testometer.pvrCinemasMain.PVRCinemasHomeTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

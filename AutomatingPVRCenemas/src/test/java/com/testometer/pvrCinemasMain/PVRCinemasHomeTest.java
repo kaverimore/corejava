@@ -1,5 +1,8 @@
 package com.testometer.pvrCinemasMain;
 
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+
 import junit.framework.Assert;
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -41,7 +44,28 @@ import pvrCinemasBusinessLayer.PVRCinemasHome;
 */
 public class PVRCinemasHomeTest
 {
-	@org.junit.Test
+	
+	@BeforeMethod
+	public void beorMethod()
+	{
+		System.out.println("Welcome.........");
+	}
+	
+	@org.testng.annotations.Test
+	public void automatingMovieSearchFeature() throws InterruptedException
+	{
+		String actualReturnedValue;
+		//invoking the actual method for testing to get the actual  result returned by the method..
+		//PVRCinemasome pvrCinemas = new PVRCinemasome();
+		
+		//pverCinemas.
+		actualReturnedValue = PVRCinemasHome.automatingMovieSearchFeature();
+	
+		//Testing of actual Vs Expected for testing purpose....Assert Class...
+		org.testng.Assert.assertEquals("True", actualReturnedValue);
+	
+	}
+	@org.testng.annotations.Test
 	public void addingNumbersTest()
 	{
 		int actualReturnedValue;
@@ -56,7 +80,8 @@ public class PVRCinemasHomeTest
 		
 		org.junit.Assert.assertEquals(25, actualReturnedValue);
 	}
-	@org.junit.Test
+	
+	@org.testng.annotations.Test
 	public void addingNumbersTest2()
 	{
 		int actualReturnedValue;
@@ -71,7 +96,12 @@ public class PVRCinemasHomeTest
 		org.junit.Assert.assertEquals(35, actualReturnedValue);
 	}
 	
-	
+	@AfterMethod
+	public void afterMethod()
+	{
+		System.out.println("Bye..........");
 	}
+	
+	}//End of the class
 	
 	
