@@ -2,10 +2,10 @@
 <testng-results skipped="0" failed="0" ignored="0" total="0" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="com.testometer.pvrCinemasMain.AppTest" duration-ms="54" started-at="2021-05-22T11:30:37 EDT" finished-at="2021-05-22T11:30:37 EDT">
+  <suite name="com.testometer.pvrCinemasMain.PVRCinemasHomeTest" duration-ms="19" started-at="2021-05-23T23:05:42 EDT" finished-at="2021-05-23T23:05:42 EDT">
     <groups>
     </groups>
-    <test name="Command line test" duration-ms="54" started-at="2021-05-22T11:30:37 EDT" finished-at="2021-05-22T11:30:37 EDT">
+    <test name="Command line test" duration-ms="19" started-at="2021-05-23T23:05:42 EDT" finished-at="2021-05-23T23:05:42 EDT">
     </test> <!-- Command line test -->
-  </suite> <!-- com.testometer.pvrCinemasMain.AppTest -->
+  </suite> <!-- com.testometer.pvrCinemasMain.PVRCinemasHomeTest -->
 </testng-results>
